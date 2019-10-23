@@ -14,12 +14,12 @@ Y=dataset.iloc[:,1].values
 from sklearn.model_selection._split import train_test_split
 X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
 
-#implement our slassifier based on simple linear regression
+#implement our classifier based on simple linear regression
 from sklearn.linear_model import LinearRegression
 simplelinearRegression=LinearRegression()
 simplelinearRegression.fit(X_train,Y_train)
 Y_predict=simplelinearRegression.predict(X_test)
-Y_predict_ll=simplelinearRegression.predict([[11]])
+#Y_predict_ll=simplelinearRegression.predict([[11]])
 
 
 #implement the graph

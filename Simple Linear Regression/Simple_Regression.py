@@ -1,3 +1,6 @@
+#Problem statement: Supervised learning algorithm is applied by Simple Linear Regression model
+#where the dataframe is divided into traing and test data frame and plot a graph for it  
+
 #libraries are imported 
 import numpy as np
 import pandas as pd
@@ -19,10 +22,14 @@ from sklearn.linear_model import LinearRegression
 simplelinearRegression=LinearRegression()
 simplelinearRegression.fit(X_train,Y_train)
 Y_predict=simplelinearRegression.predict(X_test)
-#Y_predict_ll=simplelinearRegression.predict([[11]])
-
+#Y_predict_ll=simplelinearRegression.predict([[14]])
+#u=simplelinearRegression.coef_
+#u=simplelinearRegression.intercept_
 
 #implement the graph
-plt.scatter(X_train,Y_train,color='red')
+plt.xlabel('Years of experience')
+plt.ylabel('Salary(BDT)')
+plt.scatter(X_train,Y_train,color='red',marker='+')
+
 plt.plot(X_train,simplelinearRegression.predict(X_train))
 plt.show()

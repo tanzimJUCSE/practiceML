@@ -1,9 +1,3 @@
-#Problem statement : Multivariate simple linear regression model is applied by 
-#where you have to show the prediction for two given inputs that's why there is no need for 
-#split the dataset 
-#This following hiring excel file contains many empty values 
-
-#read the data file
 import pandas as p
 data=p.read_excel('hiring.xlsx')
 
@@ -24,4 +18,22 @@ data.test_score=data.test_score.fillna(mean)
 from sklearn.linear_model import LinearRegression
 multivariate=LinearRegression()
 multivariate.fit(data[['experience','test_score','interview_score' ]],data['salary($)'])
-first_result=multivariate.predict([[2,9,6]])
+model=multivariate
+
+#using the pickle module
+import pickle 
+with open('model_pickle','wb') as file:
+    pickle.dump(model,file)
+with open('model_pickle','rb') as file:
+    saved_model=pickle.load(file)
+result=saved_model.predict([[12,8,9]])  
+
+#using the Joblib which is specially used for large data values such as numpy
+from sklearn.externals import joblib
+joblib.dump(model,'model_joblib')  
+saved_model_joblib=joblib.load('model_joblib')
+saved_model_joblib.predict([[12,8,9]])
+
+
+    
+
